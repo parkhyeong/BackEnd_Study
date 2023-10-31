@@ -6,9 +6,11 @@
     <jsp:useBean id="bag" class="bean.BbsDTO2"></jsp:useBean>
     <jsp:setProperty property="id" name="bag"/>
     <%
+    //jsp에서 자동import ==> "클릭" -> ctrl + shift + m
     	BbsDAO dao = new BbsDAO();
     	BbsDTO2 bag2 = dao.one(bag);
     %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,38 +40,35 @@
 			</a>
 		<% } %>
 		<br>
-		<%-- <%= bag2 %> --%>
-		<table class="table">
-			<tr class="table-success">
-				<td>제목</td>
-				<td><%= bag2.getTitle() %></td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td><%= bag2.getContent() %></td>
-			</tr>
-			<tr>
-				<td>작성자</td>
-				<td><%= bag2.getWriter() %></td>
-			</tr>
-		</table>
-		<center>
-			<a href="bbs.jsp">
-					<button class="btn btn-info">리스트로</button>
-			</a>
-			<% 
-				if(session.getAttribute("id") != null){
-					if(session.getAttribute("id").equals(bag2.getWriter())){
-			%>
-				<a href="update.jsp?id=<%= bag.getId()%>">
-						<button class="btn btn-danger">수정하기</button>
-				</a>
-				<a href="delete.jsp?id=<%= bag.getId()%>">
-						<button class="btn btn-danger">삭제하기</button>
-				</a>
-			<% }} %>
-		</center>
+		<hr color="blue">
+		
+		<!-- insert2.jsp?title=1&content=1 -->
+		<form action="insert2.jsp">
+			<input name="id" value="<%=bag2.getId() %>" type="hidden">
+				<table border="1"  class="table table-hover" type="hidden">
+					<tr  class="table-warning">
+						<td width="200">제목</td>
+						<td width="300"><input name="title" value="<%= bag2.getTitle()%>"></td>
+					</tr>
+					<tr  class="table-warning">
+						<td width="200">내용</td>
+						<td width="300"><textarea name="content"><%= bag2.getContent()%></textarea></td>
+					</tr>
+					<tr  class="table-warning">
+						<td width="200">작성자</td>
+						<td width="300">
+							<input name="writer" value="${id}" readonly="readonly">
+						</td>
+					</tr>
+					<tr  class="table-warning">
+						<td width="200" colspan="2">
+							<button type="submit" class="btn btn-info">글수정하기</button>
+						</td>
+					</tr>
+				</table>
+		</form>
 	</div>
 </div>
 </body>
 </html>
+

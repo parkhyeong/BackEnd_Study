@@ -1,5 +1,18 @@
+<%@page import="bean.BbsDTO2"%>
+<%@page import="bean.BbsDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	
+     <jsp:useBean id="bag" class="bean.BbsDTO2"></jsp:useBean>
+     <jsp:setProperty property="*" name="bag"/>
+	<%
+		BbsDAO dao = new BbsDAO();
+		int result=dao.insert(bag);
+		
+		if(result==1){
+			response.sendRedirect("bbs.jsp");
+		}
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +37,7 @@
 	<br><br>
 		<% if(session.getAttribute("id") != null ) { %>
 			<%= session.getAttribute("id") %>님 환영합니다.
-			<a href="logout.jsp">
-				<button class="btn btn-outline-danger">로그아웃</button>
-			</a>
+			
 		<% } %>
 	</div>
 </div>

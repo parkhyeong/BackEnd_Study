@@ -27,8 +27,11 @@
 	<br>
 		<% if(session.getAttribute("id") != null ) { %>
 			<%= session.getAttribute("id") %>님 환영합니다.
+			<a href="logout.jsp">
+				<button class="btn btn-outline-danger">로그아웃</button>
+			</a>
 		<% } %>
-		<br>
+		
 		<%
 			ProductDAO dao = new ProductDAO();
 			ArrayList<ProductDTO> list = dao.list();
@@ -42,7 +45,10 @@
 		</tr>
 		<% for(ProductDTO bag: list){ %>
 			<tr class="table-warning">
-				<td><%= bag.getTitle() %></td>
+				<td>
+							<!-- product2.jsp?id=2 -->
+					<a href="product2.jsp?id=<%= bag.getId() %>"><%= bag.getTitle() %></a>
+				</td>
 				<td><%= bag.getPrice() %></td>
 				<td>
 					<img src="img/<%= bag.getImg() %>" width="150" height="150">

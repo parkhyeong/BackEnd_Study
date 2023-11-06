@@ -13,7 +13,21 @@
 				url: "data/rank.xml",
 				success:function(xml){
 					console.log(xml)
+					//rank태그를 찾아라 -> 배열 [rank태그, rank태그, rank태그]
+					//반복문 이용해서 추출 
+					//rank태그내에서도 또 태그가 있다. 또 찾아주어야 한다.
+					//name태그, tel태그
+					//태그 찾을 때는 find()사용한다. 
+					list = $(xml).find('rank')
+					$('#d1').empty()
+					for(let i = 0; i < list.length; i++){
+						name = $(list[i]).find('name').text() 
+						tel = $(list[i]).find('tel').text() 
+						console.log(name+" "+tel)
+						$('#d1').append(name+" "+tel+"<br>")
+					}
 				}
+			
 			})
 		})
 	})
@@ -21,5 +35,6 @@
 </head>
 <body>
 <button id="b1">rank.xml읽어오기</button>
+<div id="d1" style="background: yellow">xml결과 넣는 곳<br></div>
 </body>
 </html>

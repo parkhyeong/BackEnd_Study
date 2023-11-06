@@ -43,11 +43,30 @@ $(function() {
 		})
 	})
 })
+
+	$('#b2').click(function() {
+		$('#d1').empty()
+		$.ajax({
+			url:"data/car.xml",
+			success: function(xml) {
+				list=$(xml).find('record')
+				for(let i=0; i<list.length; i++){
+					let id=$(list[i]).find('id').text()
+					let email=$(list[i]).find('email').text()
+					let car=$(list[i]).find('car').text()
+					console.log(id+" "+email+" "+car)
+					$('#d1').append(id+" "+email+" "+car+"<br>")
+				}
+			}
+		})
+		
+	})
 </script>
 
 </head>
 <body>
 <button id="b1">car.json읽어와서 추출하기</button>
 <button id="b2">car.xml읽어와서 추출하기</button>
+<div id='d1' style="background: yellow">xml결과 넣는 곳<br></div>
 </body>
 </html>

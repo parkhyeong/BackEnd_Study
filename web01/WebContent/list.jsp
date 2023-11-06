@@ -1,11 +1,11 @@
+<%@page import="bean.MemberDAO"%>
 <%@page import="bean.MemberVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="bean.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    MemberDAO dao = new MemberDAO();
-    ArrayList<MemberVO> list = dao.list();
+    	MemberDAO dao = new MemberDAO();
+        ArrayList<MemberVO> list = dao.list();
     %>
 <!DOCTYPE html>
 <html>

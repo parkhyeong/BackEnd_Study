@@ -9,14 +9,14 @@
     <jsp:useBean id="bag" class="bean.MemberDTO"></jsp:useBean>
     <jsp:setProperty property="*" name="bag"/>
     <%
-    MemberDAO dao = new MemberDAO();
-    int result = dao.insert(bag); //int(1/0)
-    String resultText = "";
-    if(result == 1){
-    	resultText = "회원가입에 성공했습니다.";
-    }else{
-    	resultText = "회원가입에 실패했습니다.";
-    }
+    	MemberDAO dao = new MemberDAO();
+        int result = dao.insert(bag); //int(1/0)
+        String resultText = "";
+        if(result == 1){
+        	resultText = "회원가입에 성공했습니다.";
+        }else{
+        	resultText = "회원가입에 실패했습니다.";
+        }
     %>
     <%
 /*     String id = request.getParameter("id");

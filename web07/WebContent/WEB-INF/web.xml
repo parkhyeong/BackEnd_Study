@@ -54,5 +54,13 @@
   	<url-pattern>/moday2.do</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>member</servlet-name>
+  	<servlet-class>bean.MemberServlet</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+  	<servlet-name>member</servlet-name>
+  	<url-pattern>/insert.do</url-pattern>
+  </servlet-mapping>
 </web-app>
